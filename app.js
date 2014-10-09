@@ -131,11 +131,11 @@ app.controller("ThreadController", ["$scope", "$routeParams", '$q', "$timeout", 
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/thread/:itemId', {
-    templateUrl: '/tpl/thread.html',
+    templateUrl: 'tpl/thread.html',
     controller: 'ThreadController'
   })
   .otherwise({
-    templateUrl: '/tpl/topstories.html',
+    templateUrl: 'tpl/topstories.html',
     controller: 'TopStoriesController'
   });
 
