@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="ng-hide" ng-hide="hideSpinner">
+			<div class="spinner">
+			  <div class="rect1"></div>
+			  <div class="rect2"></div>
+			  <div class="rect3"></div>
+			  <div class="rect4"></div>
+			  <div class="rect5"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="list-group stories">
+			<div class="list-group-item" ng-repeat="story in data">
+				<h4 class="list-group-item-heading">
+					<a ng-if="story.data.url" href="{{ story.data.url }}">{{ story.data.title }}</a>
+					<a ng-if="!story.data.url" href="#/thread/{{ story.data.id }}">{{ story.data.title }}</a>
+					<small ng-if="story.data.url">{{ story.data.getHostname() }}</small>
+					<small ng-if="!story.data.url">(self)</small>
+				</h4>
+				<p class="list-group-item-text" style="overflow: hidden; font-size: 0.8em;">
+					<strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+					{{ story.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
+					<a href="#/thread/{{ story.data.id }}"><span class="ng-hide" ng-hide="!story.data.kids.length">Direct replies: <strong>{{ story.data.kids.length || 0 }}</strong></span><span class="ng-hide" ng-hide="story.data.kids.length">Link</span></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

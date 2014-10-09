@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="ng-hide" ng-hide="hideSpinner">
+			<div class="spinner">
+			  <div class="rect1"></div>
+			  <div class="rect2"></div>
+			  <div class="rect3"></div>
+			  <div class="rect4"></div>
+			  <div class="rect5"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="ng-hide" ng-hide="!story.data">
+			<a ng-if="!story.data.parent" href="#/" class="btn btn-default btn-xs">
+				<span class="glyphicon glyphicon-chevron-left"></span> Top stories
+			</a>
+			<a ng-if="story.data.parent" href="#/thread/{{ story.data.parent }}" class="btn btn-default btn-xs">
+				<span class="glyphicon glyphicon-chevron-left"></span> Parent thread
+			</a>
+
+			<hr>
+
+			<div class="page-header">
+			<h3 ng-if="story.data.title">
+				<a ng-if="story.data.url" href="{{ story.data.url }}">{{ story.data.title }}</a>
+				<small ng-if="story.data.url">{{ story.data.getHostname() }}</small>
+				<span ng-if="!story.data.url">{{ story.data.title }}</span>
+			</h3>
+			<div style="overflow: hidden; font-size: 1.2em;" ng-if="story.data.text" ng-bind-html="story.data.text"></div>
+			<p style="font-size: 0.8em;">
+				<strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+				{{ story.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
+				<span>Direct replies: <strong>{{ story.data.kids.length || 0 }}</strong></span>
+			</p>
+			</div>
+
+			<br>
+
+			<div class="comments list-group">
+				<div ng-repeat="comment in story.comments" class="list-group-item">
+		        	<p class="list-group-item-heading" style="font-size: 0.8em;">
+		        		<strong>{{ comment.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+		        		{{ comment.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
+		        		<a href="#/thread/{{ comment.data.id }}">Link</a>
+		        	</p>
+		        	<div style="overflow: hidden; font-size: 1.15em;" ng-bind-html="comment.data.text"></div>
+		        	<div class="ng-hide" ng-hide="!comment.data.kids.length">
+		        		<br>
+			        	<a class="btn btn-default btn-xs" href="#/thread/{{ comment.data.id }}" class="btn btn-default btn-xs">
+							Direct replies: <strong>{{ comment.data.kids.length || 0 }}</strong>
+						</a>
+					</div>
+			    </div>
+		    </div>
+		</div>
+	</div>
+</div>
