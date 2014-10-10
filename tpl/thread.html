@@ -29,7 +29,8 @@
 			</h3>
 			<div style="overflow: hidden; font-size: 1.2em;" ng-if="story.data.text" ng-bind-html="story.data.text"></div>
 			<p style="font-size: 0.8em;">
-				<strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+				<span ng-if="story.data.deleted"><span class="label label-default"><small style="text-transform: uppercase">Deleted</small></span> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
+				<span ng-if="!story.data.deleted"><strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
 				{{ story.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
 				<span>Direct replies: <strong>{{ story.data.kids.length || 0 }}</strong></span>
 			</p>
@@ -40,7 +41,8 @@
 			<div class="comments list-group">
 				<div ng-repeat="comment in story.comments" class="list-group-item">
 		        	<p class="list-group-item-heading" style="font-size: 0.8em;">
-		        		<strong>{{ comment.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+		        		<span ng-if="comment.data.deleted"><span class="label label-default" style="text-transform: uppercase">Deleted</span> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
+		        		<span ng-if="!comment.data.deleted"><strong>{{ comment.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
 		        		{{ comment.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
 		        		<a href="#/thread/{{ comment.data.id }}">Link</a>
 		        	</p>

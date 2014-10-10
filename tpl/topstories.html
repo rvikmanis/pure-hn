@@ -17,10 +17,10 @@
 					<a ng-if="story.data.url" href="{{ story.data.url }}">{{ story.data.title }}</a>
 					<a ng-if="!story.data.url" href="#/thread/{{ story.data.id }}">{{ story.data.title }}</a>
 					<small ng-if="story.data.url">{{ story.data.getHostname() }}</small>
-					<small ng-if="!story.data.url">(self)</small>
 				</h4>
 				<p class="list-group-item-text" style="overflow: hidden; font-size: 0.8em;">
-					<strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;
+					<span ng-if="story.data.deleted"><span class="label label-default"><small style="text-transform: uppercase">Deleted</small></span> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
+					<span ng-if="!story.data.deleted"><strong>{{ story.data.by }}</strong> &nbsp;&nbsp;/&nbsp;&nbsp;</span>
 					{{ story.data.getDuration() }} ago &nbsp;&nbsp;/&nbsp;&nbsp;
 					<a href="#/thread/{{ story.data.id }}"><span class="ng-hide" ng-hide="!story.data.kids.length">Direct replies: <strong>{{ story.data.kids.length || 0 }}</strong></span><span class="ng-hide" ng-hide="story.data.kids.length">Link</span></a>
 				</p>
