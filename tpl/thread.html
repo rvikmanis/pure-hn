@@ -12,10 +12,10 @@
 	</div>
 	<div class="col-md-12">
 		<div class="ng-hide" ng-hide="!story.data">
-			<a ng-if="!story.data.parent" href="#/" class="btn btn-default btn-xs">
+			<a ng-if="!story.data.parent" href="#/" class="btn btn-default ">
 				<span class="glyphicon glyphicon-chevron-left"></span> Top stories
 			</a>
-			<a ng-if="story.data.parent" href="#/thread/{{ story.data.parent }}" class="btn btn-default btn-xs">
+			<a ng-if="story.data.parent" href="#/thread/{{ story.data.parent }}" class="btn btn-default ">
 				<span class="glyphicon glyphicon-chevron-left"></span> Parent thread
 			</a>
 
@@ -47,7 +47,7 @@
 		        	<div style="overflow: hidden; font-size: 1.15em;" ng-bind-html="comment.data.text"></div>
 		        	<div class="ng-hide" ng-hide="!comment.data.kids.length">
 		        		<br>
-			        	<a class="btn btn-default btn-xs" href="#/thread/{{ comment.data.id }}" class="btn btn-default btn-xs">
+			        	<a class="btn btn-default " href="#/thread/{{ comment.data.id }}" class="btn btn-default ">
 							Direct replies: <strong>{{ comment.data.kids.length || 0 }}</strong>
 						</a>
 					</div>
