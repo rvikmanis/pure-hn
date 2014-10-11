@@ -109,10 +109,23 @@
 	margin-bottom: 16px;
 }
 
-.stories.list-group > .list-group-item {
-	margin-bottom: 16px;
-}
-
 .page-header {
 	margin-top: 20px;
+}
+
+.stories.list-group {
+  margin-top: (@line-height-computed * -1);
+}
+
+.stories.list-group > .list-group-item {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid @hr-border;
+  margin-bottom: 1px;
+  padding: @line-height-computed 0;
+}
+
+.stories.list-group > .list-group-item:last-child {
+  border-bottom: 0;
 }
